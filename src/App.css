@@ -1,0 +1,19 @@
+/* override browser default */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* use viewport-relative units to cover page fully */
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+#root {
+  display: flex;
+  height: -webkit-fill-available;
+  font-family: sans-serif;
+  background-color: var(--color-grey-0);
+}
