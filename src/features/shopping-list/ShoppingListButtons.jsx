@@ -1,7 +1,9 @@
 import IconButton from "../../components/IconButton";
 import { GrPowerReset } from "react-icons/gr";
 import { VscClearAll } from "react-icons/vsc";
+
 import styled from "styled-components";
+import TippyElement from "../../components/Tippy";
 
 const StyledButtonsContainer = styled.div`
   display: flex;
@@ -15,12 +17,16 @@ const StyledButtonsContainer = styled.div`
 function ShoppingListButtons() {
   return (
     <StyledButtonsContainer>
-      <IconButton as="shopping-list-button">
-        <VscClearAll />
-      </IconButton>
-      <IconButton as="shopping-list-button">
-        <GrPowerReset />
-      </IconButton>
+      <TippyElement text="Clear all un-saved items">
+        <IconButton as="shopping-list-button">
+          <VscClearAll />
+        </IconButton>
+      </TippyElement>
+      <TippyElement text="Reset all to un-selected">
+        <IconButton as="shopping-list-button">
+          <GrPowerReset />
+        </IconButton>
+      </TippyElement>
     </StyledButtonsContainer>
   );
 }

@@ -78,6 +78,10 @@ const GlobalStyles = createGlobalStyle`
 
     --image-grayscale: 10%;
     --image-opacity: 90%;
+
+    svg{
+      filter: invert(1);
+    }
   }
 
   /* Indigo */
@@ -136,7 +140,6 @@ select:focus {
   outline-offset: -1px;
 }
 
-/* Parent selector, finally 😃 */
 button:has(svg) {
   line-height: 0;
 }

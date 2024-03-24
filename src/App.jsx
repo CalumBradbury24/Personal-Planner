@@ -1,10 +1,12 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import "./App.css";
 import AppLayout from "./layouts/AppLayout";
 import ShoppingList from "./pages/ShoppingList";
+import PageNotFound from "./pages/PageNotFound";
 import { DarkModeProvider } from "./contexts/DarkModeContext";
 import GlobalStyles from "./styles/GlobalStyles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "react-hot-toast";
+import "./App.css";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,13 +33,11 @@ function App() {
               ></Route>
               <Route path="shopping-list" element={<ShoppingList />}></Route>
             </Route>
-            <Route
-              path="*"
-              element={/*<PageNotFound />*/ <h1>Page not found</h1>}
-            />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
+      <Toaster />
     </DarkModeProvider>
   );
 }

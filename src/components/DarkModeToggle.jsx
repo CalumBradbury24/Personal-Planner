@@ -7,7 +7,11 @@ function DarkModeToggle() {
 
   return (
     <IconButton type="darkmode-button" onClick={toggleDarkMode}>
-      {isDarkMode ? <HiOutlineSun /> : <HiOutlineMoon />}
+      {isDarkMode ? (
+        <HiOutlineSun style={{ filter: "invert(0)" }} />
+      ) : (
+        <HiOutlineMoon />
+      )}
     </IconButton>
   );
 }

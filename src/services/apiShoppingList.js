@@ -3,12 +3,13 @@ import supabase from "./supabase";
 const getShoppingList = async () => {
   const { data, error } = await supabase
     .from("ShoppingListItems")
-    .select(`itemId, name, saved, ItemCategories (name)`);
+    .select(`itemId, name, saved, quantity, ItemCategories (name, colour)`);
 
   const shoppingList = data.map((entry) => {
     const datum = {
       ...entry,
-      categoryType: entry.ItemCategories.name,
+      categoryType: entry.ItemCategories?.name || "",
+      colour: entry.ItemCategories?.colour || "saddlebrown",
     };
 
     delete datum.ItemCategories;
@@ -24,4 +25,18 @@ const getShoppingList = async () => {
   return shoppingList;
 };
 
-export { getShoppingList };
+const deleteItemFromShoppingList = async (itemId) => {
+  const { error } = await supabase
+    .from("ShoppingListItems")
+    .delete()
+    .eq("itemId", itemId);
+  console.log(error);
+  if (error) {
+    console.error(error);
+    throw new Error("Item could not be deleted");
+  }
+
+  return true;
+};
+
+export { getShoppingList, deleteItemFromShoppingList };

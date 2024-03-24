@@ -32,5 +32,3 @@ const IconButton = styled.button`
 `;
 
 export default IconButton;
-
-//Sh1o7pmOPimKrMZO - supabase password

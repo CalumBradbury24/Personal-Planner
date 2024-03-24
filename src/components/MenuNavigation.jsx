@@ -18,7 +18,10 @@ const StyledNavLink = styled(NavLink)`
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: var(--color-grey-600);
+
+  > span {
+    color: var(--color-grey-600);
+  }
 
   &:link,
   &:visited {
@@ -27,12 +30,11 @@ const StyledNavLink = styled(NavLink)`
   }
 
   /* This works because react-router places the active class on the active NavLink */
-  &:hover,
-  &:active,
-  &.active:link,
-  &.active:visited {
+  &:hover span,
+  &:active span,
+  &.active:link span,
+  &.active:visited span {
     color: var(--color-brand-700);
-    border-radius: var(--border-radius-sm);
   }
 
   & svg {
@@ -57,7 +59,7 @@ const menuItems = [
   {
     title: "Saved List Items",
     icon: <BsCartCheckFill />,
-    route: "/shopping-list",
+    route: "/saved-items",
   },
 ];
 
