@@ -6,6 +6,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useDeleteShoppingListItem } from "./useDeleteShoppingList";
+import { useState } from "react";
 
 const StyledListItem = styled.div`
   display: flex;
@@ -16,6 +17,10 @@ const StyledListItem = styled.div`
   }}
 `;
 
+const StyledRadioButtonAndTextContainer = styled.div`
+  display: flex;
+  gap: 10px;
+`;
 const StyledTextContainer = styled.div``;
 const StyledMainText = styled.span`
   display: flex;
@@ -43,22 +48,52 @@ ListItem.propTypes = {
 };
 
 function ListItem({ item }) {
+  const [reRender, setRerender] = useState(false);
   const { isDeleting, deleteShoppingListItem } = useDeleteShoppingListItem();
+  const isStruck = !!localStorage.getItem(`struck-through-${item.itemId}`);
 
   if (isDeleting) return console.log("Deleting item");
+
   return (
     <StyledListItem type={item.colour}>
-      <StyledTextContainer>
-        <StyledMainText>
-          <p>{item.name || "Name not found"}</p>
-          <TippyElement
-            text={item.saved ? "Remove from favourites" : "Add to favourites"}
-          >
-            <IconButton>{item.saved ? <FaHeart /> : <FaRegHeart />}</IconButton>
-          </TippyElement>
-        </StyledMainText>
-        <StyledSubText>{item.quantity || 0}</StyledSubText>
-      </StyledTextContainer>
+      <StyledRadioButtonAndTextContainer>
+        <input
+          onChange={() => {
+            localStorage.setItem(
+              `struck-through-${item.itemId}`,
+              JSON.stringify(!isStruck)
+            );
+            setRerender((r) => !r);
+          }}
+          type="checkbox"
+          checked={isStruck ? true : false}
+          value={isStruck ? true : false}
+          style={{
+            marginTop: "1px",
+            width: "15px",
+            height: "15px",
+          }}
+        ></input>
+        <StyledTextContainer>
+          <StyledMainText>
+            <p
+              style={{
+                textDecoration: `${isStruck ? "line-through" : ""}`,
+              }}
+            >
+              {item.name || "Name not found"}
+            </p>
+            <TippyElement
+              text={item.saved ? "Remove from favourites" : "Add to favourites"}
+            >
+              <IconButton>
+                {item.saved ? <FaHeart /> : <FaRegHeart />}
+              </IconButton>
+            </TippyElement>
+          </StyledMainText>
+          <StyledSubText>{item.quantity || 0}</StyledSubText>
+        </StyledTextContainer>
+      </StyledRadioButtonAndTextContainer>
       <StyledButtonsContainer>
         <TippyElement text="Edit Item">
           <IconButton>

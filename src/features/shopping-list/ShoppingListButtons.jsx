@@ -14,16 +14,23 @@ const StyledButtonsContainer = styled.div`
   padding-right: 10px;
 `;
 
-function ShoppingListButtons() {
+function ShoppingListButtons({ setUntoggleItems }) {
+  const clearItemsFromLocalStorage = () => {
+    localStorage.clear();
+    setUntoggleItems((currentstate) => !currentstate);
+  };
   return (
     <StyledButtonsContainer>
-      <TippyElement text="Clear all un-saved items">
-        <IconButton as="shopping-list-button">
+      <TippyElement text="Clear all un-saved items from list">
+        <IconButton type="shopping-list-button">
           <VscClearAll />
         </IconButton>
       </TippyElement>
       <TippyElement text="Reset all to un-selected">
-        <IconButton as="shopping-list-button">
+        <IconButton
+          type="shopping-list-button"
+          onClick={() => clearItemsFromLocalStorage()}
+        >
           <GrPowerReset />
         </IconButton>
       </TippyElement>
@@ -32,5 +39,3 @@ function ShoppingListButtons() {
 }
 
 export default ShoppingListButtons;
-// clear list
-// untoggle all items

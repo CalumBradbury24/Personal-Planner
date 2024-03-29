@@ -23,6 +23,7 @@ function List() {
     return (
       <ResourceNotFound message="There are currently no items in the shopping list." />
     );
+
   return (
     <StyledCardBody>
       {shoppingList.map((item) => {

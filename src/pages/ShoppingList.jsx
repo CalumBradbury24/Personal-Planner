@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ShoppingInput from "../features/shopping-list/ShoppingInput";
 import ShoppingListButtons from "../features/shopping-list/ShoppingListButtons";
 import List from "../features/shopping-list/List";
+import { useState } from "react";
 
 const StyledCard = styled.div`
   width: 75%;
@@ -19,11 +20,13 @@ const StyledCardHeading = styled.div`
 `;
 
 function ShoppingList() {
+  const [untoggleItems, setUntoggleItems] = useState(false);
+
   return (
     <StyledCard>
       <StyledCardHeading>
         <ShoppingInput />
-        <ShoppingListButtons />
+        <ShoppingListButtons setUntoggleItems={setUntoggleItems} />
       </StyledCardHeading>
       <List />
     </StyledCard>
