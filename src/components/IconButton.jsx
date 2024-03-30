@@ -22,11 +22,33 @@ const IconButton = styled.button`
       padding: 10px;
     `}
 
+	${(props) =>
+    props.type === "close-modal" &&
+    css`
+      
+ 
+	transform: translateX(0.8rem);
+	transition: all 0.2s;
+	position: absolute;
+	top: 1.2rem;
+	right: 1.9rem;
+
+	&:hover {
+		background-color: var(--color-grey-100);
+	}
+
+	& svg {
+		width: 1.5rem;
+		height: 1.5rem;
+		color: var(--color-grey-500);
+			
+	`}
+
   /* &:hover {
     background-color: var(--color-grey-100);
   } */
 
-  > svg {
+	> svg {
     cursor: pointer;
   }
 `;

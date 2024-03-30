@@ -16,7 +16,11 @@ const StyledButtonsContainer = styled.div`
 
 function ShoppingListButtons({ setUntoggleItems }) {
   const clearItemsFromLocalStorage = () => {
-    localStorage.clear();
+    Object.entries(window.localStorage).forEach((item) => {
+      if (item[0].includes("struck-through"))
+        window.localStorage.removeItem(item[0]);
+    });
+    //localStorage.clear();
     setUntoggleItems((currentstate) => !currentstate);
   };
   return (

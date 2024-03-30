@@ -5,7 +5,7 @@ import IconButton from "../../components/IconButton";
 import { MdDeleteForever } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { useDeleteShoppingListItem } from "./useDeleteShoppingList";
+import { useDeleteShoppingListItem } from "./useDeleteShoppingListItem";
 import { useState } from "react";
 
 const StyledListItem = styled.div`

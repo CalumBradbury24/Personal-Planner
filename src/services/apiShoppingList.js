@@ -39,4 +39,19 @@ const deleteItemFromShoppingList = async (itemId) => {
   return true;
 };
 
-export { getShoppingList, deleteItemFromShoppingList };
+const addItemToShoppingList = async (item) => {
+  const { name, quantity, saved } = item;
+  const { error } = await supabase
+    .from("ShoppingListItems")
+    .insert([{ name, quantity, saved }])
+    .select();
+  console.log(error);
+  if (error) {
+    console.error(error);
+    throw new Error("Item could not be added");
+  }
+
+  return true;
+};
+
+export { getShoppingList, deleteItemFromShoppingList, addItemToShoppingList };

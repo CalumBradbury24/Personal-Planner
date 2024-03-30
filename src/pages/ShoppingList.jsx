@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ShoppingInput from "../features/shopping-list/ShoppingInput";
+import AddItem from "../features/shopping-list/AddItem";
 import ShoppingListButtons from "../features/shopping-list/ShoppingListButtons";
 import List from "../features/shopping-list/List";
 import { useState } from "react";
@@ -25,7 +25,7 @@ function ShoppingList() {
   return (
     <StyledCard>
       <StyledCardHeading>
-        <ShoppingInput />
+        <AddItem />
         <ShoppingListButtons setUntoggleItems={setUntoggleItems} />
       </StyledCardHeading>
       <List />
