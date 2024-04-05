@@ -40,10 +40,10 @@ const deleteItemFromShoppingList = async (itemId) => {
 };
 
 const addItemToShoppingList = async (item) => {
-  const { name, quantity, saved } = item;
+  const { name, quantity, saved, categoryId } = item;
   const { error } = await supabase
     .from("ShoppingListItems")
-    .insert([{ name, quantity, saved }])
+    .insert([{ name, quantity, saved, categoryId }])
     .select();
   console.log(error);
   if (error) {
@@ -54,4 +54,23 @@ const addItemToShoppingList = async (item) => {
   return true;
 };
 
-export { getShoppingList, deleteItemFromShoppingList, addItemToShoppingList };
+const getShoppingItemCategories = async () => {
+  const { data: itemCategories, error } = await supabase
+    .from("ItemCategories")
+    .select("categoryId, name, colour");
+
+  console.log("item categories -> ", itemCategories);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Item categories could not be loaded");
+  }
+  return itemCategories;
+};
+
+export {
+  getShoppingList,
+  deleteItemFromShoppingList,
+  addItemToShoppingList,
+  getShoppingItemCategories,
+};

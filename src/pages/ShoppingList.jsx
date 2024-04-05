@@ -3,6 +3,7 @@ import AddItem from "../features/shopping-list/AddItem";
 import ShoppingListButtons from "../features/shopping-list/ShoppingListButtons";
 import List from "../features/shopping-list/List";
 import { useState } from "react";
+import AddItemInput from "../features/shopping-list/AddItemInput";
 
 const StyledCard = styled.div`
   width: 75%;
@@ -17,6 +18,7 @@ const StyledCardHeading = styled.div`
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-color: var(--color-brand-500);
+  height: 65px;
 `;
 
 function ShoppingList() {
@@ -25,7 +27,7 @@ function ShoppingList() {
   return (
     <StyledCard>
       <StyledCardHeading>
-        <AddItem />
+        <AddItemInput />
         <ShoppingListButtons setUntoggleItems={setUntoggleItems} />
       </StyledCardHeading>
       <List />

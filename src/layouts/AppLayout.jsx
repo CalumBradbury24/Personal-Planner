@@ -28,7 +28,7 @@ function AppLayout() {
   return (
     <StyledAppLayout>
       <Sidebar />
-      <StyledMain>
+      <StyledMain id="main-content">
         <Header />
         <StyledSection>
           <Outlet />

@@ -28,13 +28,17 @@ const Overlay = styled.div`
 `;
 
 //Original way of rendering the modal
-function Modal({ children, onCloseModal }) {
+function Modal({ children, onCloseModal, type = "" }) {
   return createPortal(
     <Overlay>
-      <StyledModal>
-        <IconButton type="close-modal" onClick={() => onCloseModal()}>
-          <HiXMark />
-        </IconButton>
+      <StyledModal
+        style={type === "modal-spinner" ? { left: "56%", top: "35%" } : {}}
+      >
+        {type !== "modal-spinner" && (
+          <IconButton type="close-modal" onClick={() => onCloseModal()}>
+            <HiXMark />
+          </IconButton>
+        )}
         <div>{children}</div>
       </StyledModal>
     </Overlay>,

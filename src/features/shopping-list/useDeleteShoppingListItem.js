@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 export function useDeleteShoppingListItem() {
   const queryClient = useQueryClient();
 
-  const { isLoading: isDeleting, mutate: deleteShoppingListItem } = useMutation(
+  const { isPending: isDeleting, mutate: deleteShoppingListItem } = useMutation(
     {
       mutationFn: deleteItemFromShoppingList,
       onSuccess: () => {

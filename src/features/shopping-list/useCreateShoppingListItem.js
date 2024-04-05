@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 export function useCreateShoppingListItem() {
   const queryClient = useQueryClient();
-  const { mutate: createShoppingListItem, isLoading: isCreating } = useMutation(
+  const { mutate: createShoppingListItem, isPending: isCreating } = useMutation(
     {
       mutationFn: addItemToShoppingList,
       onSuccess: () => {
