@@ -6,7 +6,6 @@ import styled from "styled-components";
 import toast from "react-hot-toast";
 import AddItem from "./AddItem";
 import { useItemCategories } from "./useShoppingItemCategories";
-import Spinner from "../../components/Spinner";
 
 const StyledInputContainer = styled.div`
   border: 1px solid black;
@@ -72,6 +71,7 @@ function AddItemInput() {
       {isOpenModal && !isLoadingItemCategories && (
         <Modal onCloseModal={() => setIsOpenModal(false)}>
           <AddItem
+            className="hi"
             itemName={input}
             setIsOpenModal={setIsOpenModal}
             setInput={setInput}

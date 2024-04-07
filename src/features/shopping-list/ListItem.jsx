@@ -2,11 +2,17 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import TippyElement from "../../components/Tippy";
 import IconButton from "../../components/IconButton";
+import AreYouSure from "../../components/AreYouSure";
+import Button from "../../components/Button";
+import Modal from "../../components/Modal";
+
 import { MdDeleteForever } from "react-icons/md";
-import { CiEdit } from "react-icons/ci";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useDeleteShoppingListItem } from "./useDeleteShoppingListItem";
 import { useState } from "react";
+
+import { TiDelete } from "react-icons/ti";
+import { CiEdit } from "react-icons/ci";
+import { FaHeart, FaRegHeart, FaRegThumbsUp } from "react-icons/fa";
 
 const StyledListItem = styled.div`
   display: flex;
@@ -49,6 +55,7 @@ ListItem.propTypes = {
 
 function ListItem({ item }) {
   const [reRender, setRerender] = useState(false);
+  const [openAreYouSureModal, setOpenAreYouSureModal] = useState(false);
   const { isDeleting, deleteShoppingListItem } = useDeleteShoppingListItem();
   const isStruck = !!localStorage.getItem(`struck-through-${item.itemId}`);
 
@@ -101,11 +108,30 @@ function ListItem({ item }) {
           </IconButton>
         </TippyElement>
         <TippyElement text="Delete item from shopping list">
-          <IconButton onClick={() => deleteShoppingListItem(item.itemId)}>
+          <IconButton onClick={() => setOpenAreYouSureModal((e) => !e)}>
             <MdDeleteForever />
           </IconButton>
         </TippyElement>
       </StyledButtonsContainer>
+
+      {openAreYouSureModal && (
+        <Modal onCloseModal={() => setOpenAreYouSureModal(false)}>
+          <AreYouSure
+            text={`Are you sure you wish to delete ${item.name} from your shopping list?`}
+          >
+            <Button
+              text="Yes"
+              icon={<FaRegThumbsUp />}
+              onClick={() => deleteShoppingListItem(item.itemId)}
+            />
+            <Button
+              text="No"
+              icon={<TiDelete />}
+              onClick={() => setOpenAreYouSureModal(false)}
+            />
+          </AreYouSure>
+        </Modal>
+      )}
     </StyledListItem>
   );
 }
