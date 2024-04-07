@@ -49,6 +49,14 @@ const StyledButtonsContainer = styled.div`
   height: fit-content;
 `;
 
+const AreYouSureButtonsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+  padding-top: 15px;
+`;
+
 ListItem.propTypes = {
   item: PropTypes.object.isRequired,
 };
@@ -119,16 +127,20 @@ function ListItem({ item }) {
           <AreYouSure
             text={`Are you sure you wish to delete ${item.name} from your shopping list?`}
           >
-            <Button
-              text="Yes"
-              icon={<FaRegThumbsUp />}
-              onClick={() => deleteShoppingListItem(item.itemId)}
-            />
-            <Button
-              text="No"
-              icon={<TiDelete />}
-              onClick={() => setOpenAreYouSureModal(false)}
-            />
+            <AreYouSureButtonsContainer>
+              <Button
+                variation="okay"
+                text="Yes"
+                icon={<FaRegThumbsUp />}
+                onClick={() => deleteShoppingListItem(item.itemId)}
+              />
+              <Button
+                variation="cancel"
+                text="No"
+                icon={<TiDelete style={{ height: "25px", width: "25px" }} />}
+                onClick={() => setOpenAreYouSureModal(false)}
+              />
+            </AreYouSureButtonsContainer>
           </AreYouSure>
         </Modal>
       )}
