@@ -16,6 +16,7 @@ const getShoppingList = async () => {
     return datum;
   });
 
+  shoppingList.sort((a, b) => b.categoryType.localeCompare(a.categoryType));
   console.log("Shopping list -> ", shoppingList);
 
   if (error) {

@@ -78,6 +78,7 @@ function AddItemInput() {
     <StyledInputContainer>
       <StyledInput
         type="text"
+        placeholder="..."
         onChange={(e) => setInput(e.target.value)}
         value={input}
       />
