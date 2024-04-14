@@ -1,11 +1,14 @@
 import { useState } from "react";
+import styled from "styled-components";
+
 import Button from "../../components/Button";
 import TippyElement from "../../components/Tippy";
 import IconButton from "../../components/IconButton";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { useCreateShoppingListItem } from "./useCreateShoppingListItem";
 import Spinner from "../../components/Spinner";
-import styled from "styled-components";
+import { useCreateShoppingListItem } from "./useCreateShoppingListItem";
+import { devices } from "../../styles/styleConstants";
+
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 const StyledAddItem = styled.div`
@@ -14,6 +17,11 @@ const StyledAddItem = styled.div`
   gap: 10px;
   max-width: 500px;
   min-width: 300px;
+  font-size: 1rem;
+
+  @media screen and ${devices.medium} {
+    font-size: 0.8rem;
+  }
 `;
 
 const StyledHeading = styled.span`

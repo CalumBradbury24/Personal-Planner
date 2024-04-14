@@ -1,9 +1,11 @@
+import { useState } from "react";
 import styled from "styled-components";
-import AddItem from "../features/shopping-list/AddItem";
+
 import ShoppingListButtons from "../features/shopping-list/ShoppingListButtons";
 import List from "../features/shopping-list/List";
-import { useState } from "react";
 import AddItemInput from "../features/shopping-list/AddItemInput";
+
+import { devices } from "../styles/styleConstants";
 
 const StyledCard = styled.div`
   width: 75%;
@@ -19,6 +21,10 @@ const StyledCardHeading = styled.div`
   border-top-right-radius: 10px;
   background-color: var(--color-brand-500);
   height: 65px;
+
+  @media screen and ${devices.medium} {
+    grid-template-columns: auto 1fr 1fr;
+  }
 `;
 
 function ShoppingList() {

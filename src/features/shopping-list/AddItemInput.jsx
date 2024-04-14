@@ -1,17 +1,21 @@
 import { useState } from "react";
+import styled from "styled-components";
+
 import IconButton from "../../components/IconButton";
 import Modal from "../../components/Modal";
-import { FaSearchPlus } from "react-icons/fa";
-import styled from "styled-components";
 import toast from "react-hot-toast";
 import AddItem from "./AddItem";
+
 import { useItemCategories } from "./useShoppingItemCategories";
+import { devices } from "../../styles/styleConstants";
+import { FaSearchPlus } from "react-icons/fa";
 
 const StyledInputContainer = styled.div`
   border: 1px solid black;
   border-radius: 20px;
   display: flex;
   grid-column: 2;
+  width: fit-content;
 `;
 
 const StyledInput = styled.input`
@@ -25,6 +29,10 @@ const StyledInput = styled.input`
   border-bottom-left-radius: 20px;
   transition: width 400ms ease-in-out;
 
+  @media screen and ${devices.medium} {
+    width: 10px;
+  }
+
   &:focus {
     outline: none;
     border-color: #9ecaed;
@@ -37,6 +45,15 @@ const StyledInput = styled.input`
     box-shadow: 0 0 10px #9ecaed;
     width: 280px;
     transition: width 400ms ease-in-out;
+  }
+
+  @media screen and ${devices.medium} {
+    width: 50px;
+
+    &:focus,
+    &:hover {
+      width: 150px;
+    }
   }
 `;
 

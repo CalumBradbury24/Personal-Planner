@@ -1,9 +1,10 @@
 import IconButton from "../../components/IconButton";
-import { GrPowerReset } from "react-icons/gr";
-import { VscClearAll } from "react-icons/vsc";
-
 import styled from "styled-components";
 import TippyElement from "../../components/Tippy";
+import { devices } from "../../styles/styleConstants";
+
+import { GrPowerReset } from "react-icons/gr";
+import { VscClearAll } from "react-icons/vsc";
 
 const StyledButtonsContainer = styled.div`
   display: flex;
@@ -12,6 +13,11 @@ const StyledButtonsContainer = styled.div`
   gap: 0.5rem;
   font-size: 1.1rem;
   padding-right: 10px;
+
+  @media screen and ${devices.medium} {
+    flex-direction: column;
+    gap: 0px;
+  }
 `;
 
 function ShoppingListButtons({ setUntoggleItems }) {

@@ -1,7 +1,10 @@
-import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 import { createPortal } from "react-dom";
+
 import IconButton from "./IconButton";
+import { devices } from "../styles/styleConstants";
+
+import { HiXMark } from "react-icons/hi2";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -13,6 +16,10 @@ const StyledModal = styled.div`
   box-shadow: var(--shadow-lg);
   padding: 3.2rem 4rem;
   transition: all 0.5s;
+
+  @media screen and ${devices.medium} {
+    padding: 3rem 1rem;
+  }
 `;
 
 const Overlay = styled.div`

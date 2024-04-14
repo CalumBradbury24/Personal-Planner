@@ -1,7 +1,9 @@
 import styled from "styled-components";
+
 import { NavLink } from "react-router-dom";
 import { CiBoxList } from "react-icons/ci";
 import { BsCartCheckFill } from "react-icons/bs";
+import { devices } from "../styles/styleConstants";
 
 const StyledUl = styled.ul`
   list-style-type: none;
@@ -21,6 +23,10 @@ const StyledNavLink = styled(NavLink)`
 
   > span {
     color: var(--color-grey-600);
+
+    @media screen and ${devices.medium} {
+      display: none;
+    }
   }
 
   &:link,
