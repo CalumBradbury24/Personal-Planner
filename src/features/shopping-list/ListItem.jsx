@@ -84,7 +84,7 @@ function ListItem({ item }) {
           checked={isStruck ? true : false}
           value={isStruck ? true : false}
           style={{
-            marginTop: "1px",
+            marginTop: "2px",
             width: "15px",
             height: "15px",
           }}
