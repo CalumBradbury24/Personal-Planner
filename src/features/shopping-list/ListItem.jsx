@@ -65,23 +65,31 @@ function ListItem({ item }) {
   const [reRender, setRerender] = useState(false);
   const [openAreYouSureModal, setOpenAreYouSureModal] = useState(false);
   const { isDeleting, deleteShoppingListItem } = useDeleteShoppingListItem();
-  const isStruck = !!localStorage.getItem(`struck-through-${item.itemId}`);
+  const isStruck =
+    localStorage.getItem(`struck-through-${item.itemId}`) === "false"
+      ? false
+      : !!localStorage.getItem(`struck-through-${item.itemId}`);
 
   if (isDeleting) return console.log("Deleting item");
-
+  console.log(
+    "rerendering",
+    localStorage.getItem(`struck-through-${item.itemId}`),
+    isStruck
+  );
   return (
     <StyledListItem type={item.colour}>
       <StyledRadioButtonAndTextContainer>
         <input
-          onChange={() => {
+          onChange={(e) => {
+            console.log(e.target.value);
             localStorage.setItem(
               `struck-through-${item.itemId}`,
-              JSON.stringify(!isStruck)
+              JSON.stringify(e.target.value)
             );
             setRerender((r) => !r);
           }}
           type="checkbox"
-          checked={isStruck ? true : false}
+          checked={isStruck !== "false" && isStruck !== null}
           value={isStruck ? true : false}
           style={{
             marginTop: "2px",
