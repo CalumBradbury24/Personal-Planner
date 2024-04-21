@@ -10,6 +10,10 @@ import { devices } from "../styles/styleConstants";
 const StyledCard = styled.div`
   width: 75%;
   margin: 5px;
+
+  @media screen and ${devices.medium} {
+    width: 100%;
+  }
 `;
 
 const StyledCardHeading = styled.div`
