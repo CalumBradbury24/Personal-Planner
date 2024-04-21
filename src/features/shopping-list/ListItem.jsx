@@ -8,7 +8,7 @@ import Modal from "../../components/Modal";
 
 import { MdDeleteForever } from "react-icons/md";
 import { useDeleteShoppingListItem } from "./useDeleteShoppingListItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { TiDelete } from "react-icons/ti";
 import { CiEdit } from "react-icons/ci";
@@ -62,34 +62,31 @@ ListItem.propTypes = {
 };
 
 function ListItem({ item }) {
-  const [reRender, setRerender] = useState(false);
   const [openAreYouSureModal, setOpenAreYouSureModal] = useState(false);
   const { isDeleting, deleteShoppingListItem } = useDeleteShoppingListItem();
-  const isStruck =
-    localStorage.getItem(`struck-through-${item.itemId}`) === "false"
-      ? false
-      : !!localStorage.getItem(`struck-through-${item.itemId}`);
+  const [isStruck, setIsStruck] = useState(
+    !!localStorage.getItem(`struck-through-${item.itemId}`)
+  );
+
+  useEffect(() => {
+    setIsStruck(!!localStorage.getItem(`struck-through-${item.itemId}`));
+  }, [setIsStruck, item.itemId]);
 
   if (isDeleting) return console.log("Deleting item");
-  console.log(
-    "rerendering",
-    localStorage.getItem(`struck-through-${item.itemId}`),
-    isStruck
-  );
+  console.log(isStruck, "rerendering");
   return (
     <StyledListItem type={item.colour}>
       <StyledRadioButtonAndTextContainer>
         <input
-          onChange={(e) => {
-            console.log(e.target.value);
+          onChange={() => {
             localStorage.setItem(
               `struck-through-${item.itemId}`,
-              JSON.stringify(e.target.value)
+              JSON.stringify(!isStruck)
             );
-            setRerender((r) => !r);
+            setIsStruck((cur) => !cur);
           }}
           type="checkbox"
-          checked={isStruck !== "false" && isStruck !== null}
+          checked={isStruck ? true : false}
           value={isStruck ? true : false}
           style={{
             marginTop: "2px",
