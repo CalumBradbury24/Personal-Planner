@@ -52,7 +52,7 @@ const StyledInput = styled.input`
 
     &:focus,
     &:hover {
-      width: 150px;
+      width: 250px;
     }
   }
 `;

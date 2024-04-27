@@ -14,6 +14,3 @@ function Header() {
 }
 
 export default Header;
-
-//On large screens: icon - darkmode toggle
-//on small screens the same?

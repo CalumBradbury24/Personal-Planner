@@ -7,6 +7,7 @@ const StyledAppLayout = styled.div`
   display: flex;
   flex: 1;
   margin: 10px;
+  overflow: hidden;
 `;
 
 const StyledMain = styled.main`
@@ -22,6 +23,7 @@ const StyledSection = styled.section`
   display: flex;
   justify-content: center;
   margin-left: 10px;
+  overflow: auto;
 `;
 
 function AppLayout() {

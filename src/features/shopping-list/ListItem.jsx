@@ -115,16 +115,12 @@ function ListItem({ item }) {
         </StyledTextContainer>
       </StyledRadioButtonAndTextContainer>
       <StyledButtonsContainer>
-        <TippyElement text="Edit Item">
-          <IconButton>
-            <CiEdit />
-          </IconButton>
-        </TippyElement>
-        <TippyElement text="Delete item from shopping list">
-          <IconButton onClick={() => setOpenAreYouSureModal((e) => !e)}>
-            <MdDeleteForever />
-          </IconButton>
-        </TippyElement>
+        <IconButton>
+          <CiEdit />
+        </IconButton>
+        <IconButton onClick={() => setOpenAreYouSureModal((e) => !e)}>
+          <MdDeleteForever />
+        </IconButton>
       </StyledButtonsContainer>
 
       {openAreYouSureModal && (
