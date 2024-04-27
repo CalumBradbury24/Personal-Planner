@@ -87,7 +87,7 @@ function AddItem({
         </TippyElement>
         <p
           style={{
-            color: "var(--color-brand-700)",
+            color: "var(--color-grey-900)",
             margin: "auto",
             textWrap: "nowrap",
           }}

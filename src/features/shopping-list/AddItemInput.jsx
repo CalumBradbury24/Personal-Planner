@@ -52,7 +52,7 @@ const StyledInput = styled.input`
 
     &:focus,
     &:hover {
-      width: 250px;
+      width: 225px;
     }
   }
 `;
@@ -89,7 +89,6 @@ function AddItemInput() {
       {isOpenModal && !isLoadingItemCategories && (
         <Modal onCloseModal={() => setIsOpenModal(false)}>
           <AddItem
-            className="hi"
             itemName={input}
             setIsOpenModal={setIsOpenModal}
             setInput={setInput}

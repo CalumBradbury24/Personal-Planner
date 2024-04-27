@@ -8,7 +8,7 @@ body {
 /* use viewport-relative units to cover page fully */
 body {
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
 }
 
 #root {

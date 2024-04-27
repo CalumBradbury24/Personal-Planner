@@ -11,7 +11,7 @@ const StyledCardBody = styled.div`
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   background-color: var(--color-grey-0);
-  height: calc(100% - 90px);
+  height: calc(100% - 60px);
   overflow: auto;
 `;
 
