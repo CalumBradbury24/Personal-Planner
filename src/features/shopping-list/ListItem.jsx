@@ -90,8 +90,8 @@ function ListItem({ item }) {
           value={isStruck ? true : false}
           style={{
             marginTop: "2px",
-            width: "15px",
-            height: "15px",
+            width: "20px",
+            height: "20px",
           }}
         ></input>
         <StyledTextContainer>
