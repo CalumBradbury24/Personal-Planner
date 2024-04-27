@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: "autoUpdate",
+      //registerType: "autoUpdate",
       devOptions: {
         enabled: true,
       },
@@ -15,8 +15,18 @@ export default defineConfig({
         globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/supabase\.org\/api/,
-            handler: "NetworkFirst",
+            urlPattern: /^https:\/\.supabase\.co\/.*/i,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "google-fonts-cache",
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
           },
         ],
       },
@@ -26,18 +36,6 @@ export default defineConfig({
         short_name: "HomeUtilities",
         description: "Home utilities description",
         theme_color: "#ffffff",
-        icons: [
-          {
-            src: "pwa-192x192.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "pwa-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-          },
-        ],
       },
     }),
   ],
