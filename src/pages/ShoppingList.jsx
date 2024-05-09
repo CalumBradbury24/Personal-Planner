@@ -25,12 +25,11 @@ const StyledCardHeading = styled.div`
   border-top-right-radius: 10px;
   background-color: var(--color-brand-500);
   height: 65px;
-  /* position: sticky;
-  top: 0;
-  z-index: 1; */
 
   @media screen and ${devices.medium} {
     grid-template-columns: auto 1fr 1fr;
+    height: 50px;
+    padding: 7px;
   }
 `;
 

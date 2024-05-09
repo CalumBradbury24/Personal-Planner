@@ -16,6 +16,10 @@ const StyledInputContainer = styled.div`
   display: flex;
   grid-column: 2;
   width: fit-content;
+
+  @media screen and ${devices.medium} {
+    height: 35px;
+  }
 `;
 
 const StyledInput = styled.input`

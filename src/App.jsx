@@ -7,6 +7,7 @@ import GlobalStyles from "./styles/GlobalStyles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import "./App.css";
+import EditItem from "./features/shopping-list/EditItem";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,6 +33,7 @@ function App() {
                 element={<Navigate replace to="shopping-list" />}
               ></Route>
               <Route path="shopping-list" element={<ShoppingList />}></Route>
+              <Route path="edit/:itemId" element={<EditItem />}></Route>
             </Route>
             <Route path="*" element={<PageNotFound />} />
           </Routes>

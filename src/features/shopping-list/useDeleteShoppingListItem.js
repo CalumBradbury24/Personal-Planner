@@ -9,7 +9,7 @@ export function useDeleteShoppingListItem() {
     {
       mutationFn: deleteItemFromShoppingList,
       onSuccess: () => {
-        toast.success("Item successfully deleted!");
+        toast.success("Item(s) successfully deleted!");
 
         // Invalidates the cache using the query key we set up when fetching the shopping list data in useShoppingList hook
         // Clearing the cache causes a re-fetch of the data so when an item is deleted the shopping list re-renders

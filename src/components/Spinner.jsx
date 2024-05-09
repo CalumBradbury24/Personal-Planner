@@ -26,6 +26,13 @@ function Spinner({ type }) {
           width: "50px",
           margin: "10px auto",
         }
+      : type === "overlay-spinner"
+      ? {
+          position: "absolute",
+          top: "20%",
+          left: "48%",
+          width: "50px",
+        }
       : {};
   return <StyledSpinner style={styles}></StyledSpinner>;
 }

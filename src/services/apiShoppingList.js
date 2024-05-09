@@ -26,11 +26,13 @@ const getShoppingList = async () => {
   return shoppingList;
 };
 
-const deleteItemFromShoppingList = async (itemId) => {
-  const { error } = await supabase
-    .from("ShoppingListItems")
-    .delete()
-    .eq("itemId", itemId);
+const deleteItemFromShoppingList = async (itemId = 0) => {
+  let query = supabase.from("ShoppingListItems").delete();
+
+  if (!itemId) query = query.eq("saved", false);
+  else query = query.eq("itemId", itemId);
+
+  const { error } = await query;
   console.log(error);
   if (error) {
     console.error(error);

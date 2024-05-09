@@ -9,6 +9,7 @@ import Modal from "../../components/Modal";
 import { MdDeleteForever } from "react-icons/md";
 import { useDeleteShoppingListItem } from "./useDeleteShoppingListItem";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { TiDelete } from "react-icons/ti";
 import { CiEdit } from "react-icons/ci";
@@ -64,6 +65,7 @@ ListItem.propTypes = {
 function ListItem({ item }) {
   const [openAreYouSureModal, setOpenAreYouSureModal] = useState(false);
   const { isDeleting, deleteShoppingListItem } = useDeleteShoppingListItem();
+  const navigate = useNavigate();
   const [isStruck, setIsStruck] = useState(
     !!localStorage.getItem(`struck-through-${item.itemId}`)
   );
@@ -115,7 +117,7 @@ function ListItem({ item }) {
         </StyledTextContainer>
       </StyledRadioButtonAndTextContainer>
       <StyledButtonsContainer>
-        <IconButton>
+        <IconButton onClick={() => navigate(`/edit/${item.itemId}`)}>
           <CiEdit />
         </IconButton>
         <IconButton onClick={() => setOpenAreYouSureModal((e) => !e)}>
