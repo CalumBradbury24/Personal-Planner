@@ -75,7 +75,7 @@ function ListItem({ item }) {
   }, [setIsStruck, item.itemId]);
 
   if (isDeleting) return console.log("Deleting item");
-  console.log(isStruck, "rerendering");
+
   return (
     <StyledListItem type={item.colour}>
       <StyledRadioButtonAndTextContainer>

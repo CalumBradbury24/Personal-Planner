@@ -1,16 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import { getShoppingList } from "../../services/apiShoppingList";
+import { useParams } from "react-router-dom";
 
-//should be a mutation function, used for updating/editing a specific item (pass in an object with id and list of props to update)
 export function useShoppingListItem() {
+  const { itemId } = useParams();
+
   const {
     isLoading,
-    data: shoppingList,
+    data: item,
     error,
   } = useQuery({
-    queryKey: ["shopping-list"], //Identifies this data
-    queryFn: () => getShoppingList(), // Function responsible for querying the API (must return a promise)
+    queryKey: [`shopping-list`, itemId], //Identifies this data
+    queryFn: () => getShoppingList(itemId), // Function responsible for querying the API (must return a promise)
+    retry: false, //Not needed as not finding the data in this case means it probably doesnt exist
   });
 
-  return { isLoading, error, shoppingList };
+  return { isLoading, error, item: item?.[0] };
 }

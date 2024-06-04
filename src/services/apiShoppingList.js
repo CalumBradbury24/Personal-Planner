@@ -1,9 +1,15 @@
 import supabase from "./supabase";
 
-const getShoppingList = async () => {
-  const { data, error } = await supabase
+const getShoppingList = async (itemId = 0) => {
+  let query = supabase
     .from("ShoppingListItems")
     .select(`itemId, name, saved, quantity, ItemCategories (name, colour)`);
+
+  if (itemId) query = query.eq("itemId", +itemId);
+
+  const { data, error } = await query;
+
+  if (error) console.error(error);
 
   const shoppingList = data.map((entry) => {
     const datum = {
@@ -17,7 +23,7 @@ const getShoppingList = async () => {
   });
 
   shoppingList.sort((a, b) => a.categoryType.localeCompare(b.categoryType));
-  console.log("Shopping list -> ", shoppingList);
+  console.log("Shopping list results -> ", shoppingList);
 
   if (error) {
     console.error(error);

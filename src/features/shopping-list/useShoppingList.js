@@ -8,7 +8,7 @@ export function useShoppingList() {
     error,
   } = useQuery({
     queryKey: ["shopping-list"], //Identifies this data
-    queryFn: getShoppingList, // Function responsible for querying the API (must return a promise)
+    queryFn: () => getShoppingList(), // Function responsible for querying the API (must return a promise)
   });
 
   return { isLoading, error, shoppingList };

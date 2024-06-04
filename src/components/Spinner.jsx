@@ -33,6 +33,12 @@ function Spinner({ type }) {
           left: "48%",
           width: "50px",
         }
+      : type === "section-spinner"
+      ? {
+          margin: "15% auto",
+          height: "50px",
+          width: "unset",
+        }
       : {};
   return <StyledSpinner style={styles}></StyledSpinner>;
 }
